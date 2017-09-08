@@ -2,9 +2,12 @@ angular.module('video-player')
 
   .component('app', {
     controller: function() {
-      console.log(exampleVideoData[0]);
+      var parent = this;
       this.videos = exampleVideoData;
       this.video = exampleVideoData[0];
+      this.handleTitleClick = function(video) {
+        parent.video = video;
+      };
     },
     templateUrl: '/src/templates/app.html'
   });
