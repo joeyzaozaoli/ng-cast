@@ -1,7 +1,7 @@
 angular.module('video-player')
   .service('youTube', function($http){
-    this.search = function(options, cb) {
-      return $http({
+    this.search = function(options, callback) {
+      $http({
         url: 'https://www.googleapis.com/youtube/v3/search',
         method: 'GET',
         params: {
@@ -12,11 +12,11 @@ angular.module('video-player')
           videoEmbeddable: 'true',
           key: options.key
         }
-      }).then(function successCallback(result) {
+      }).then(function success(result) {
         console.log('get success', result);
-        cb(result.data.items);
-      }, function errorCallback(error) {
-        console.log('get failure', error);
+        callback(result.data.items);
+      }, function error(error) {
+        console.log('get failure');
       });
     };
   });
