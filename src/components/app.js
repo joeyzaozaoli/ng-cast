@@ -4,8 +4,8 @@ angular.module('video-player')
     controller: function(youTube) {
       var parent = this;
 
-      this.videos = exampleVideoData;
-      this.video = exampleVideoData[0];
+      this.videos = [];
+      this.video = parent.videos[0];
 
       this.selectVideo = function(video) {
         parent.video = video;
@@ -21,6 +21,8 @@ angular.module('video-player')
           parent.video = videos[0];
         });
       };
+
+      parent.populateLiveData('swan lake');
     },
     templateUrl: '/src/templates/app.html'
   });
