@@ -7,22 +7,22 @@ angular.module('video-player')
       this.videos = [];
       this.currentVideo = parent.videos[0];
 
-      this.selectVideo = function(video) {
+      this.onClick = function(video) {
         parent.currentVideo = video;
       };
 
       this.searchResults = function(string) {
-        parent.populateLiveData(string);
+        parent.selectVideo(string);
       };
 
-      this.populateLiveData = function(string) {
+      this.selectVideo = function(string) {
         youTube.search({query: string, max: 5, key: YOUTUBE_API_KEY}, function(videos) {
           parent.videos = videos;
           parent.currentVideo = videos[0];
         });
       };
 
-      parent.populateLiveData('swan lake');
+      parent.selectVideo('swan lake');
     },
     templateUrl: 'src/templates/app.html'
   });
