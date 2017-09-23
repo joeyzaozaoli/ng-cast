@@ -5,10 +5,10 @@ angular.module('video-player')
       var parent = this;
 
       this.videos = [];
-      this.video = parent.videos[0];
+      this.currentVideo = parent.videos[0];
 
       this.selectVideo = function(video) {
-        parent.video = video;
+        parent.currentVideo = video;
       };
 
       this.searchResults = function(string) {
@@ -18,11 +18,11 @@ angular.module('video-player')
       this.populateLiveData = function(string) {
         youTube.search({query: string, max: 5, key: YOUTUBE_API_KEY}, function(videos) {
           parent.videos = videos;
-          parent.video = videos[0];
+          parent.currentVideo = videos[0];
         });
       };
 
       parent.populateLiveData('swan lake');
     },
-    templateUrl: '/src/templates/app.html'
+    templateUrl: 'src/templates/app.html'
   });
